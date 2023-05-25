@@ -64,17 +64,6 @@ jobs:
       env:
         RELEASE_VERSION: ${{ github.event.inputs.version }}
 
-    - name: Checkout repository
-      uses: actions/checkout@v3
-  
-    # Check we can download the AppVeyor build which confirms it matches the version to release as well as being a successful build
-    - name: Get Appveyor binaries
-      run: |
-        ./packaging/appveyor-download.sh
-      shell: bash
-      env:
-        TAG: v${{ github.event.inputs.version }}
-
   staging-release-generate-package-matrix:
     name: Get package matrix
     runs-on: ubuntu-latest
